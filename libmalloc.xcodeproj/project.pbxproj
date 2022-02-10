@@ -18,9 +18,8 @@
 		3FE91FFA16A90BEF00D1238A /* malloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE91FF916A90BEF00D1238A /* malloc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DF3190123D796550064A673 /* pguard_malloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DF318FF23D796550064A673 /* pguard_malloc.c */; };
 		4DF3190223D796550064A673 /* pguard_malloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DF3190023D796550064A673 /* pguard_malloc.h */; };
-		9DB7550827B4E1660068D503 /* .dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 3FE91FE816A90AEC00D1238A /* .dylib */; };
+		9DB7550A27B4ECE10068D503 /* .dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE91FE816A90AEC00D1238A /* .dylib */; };
 		9DFF92CE27B3C8970068FC5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF92CD27B3C8960068FC5E /* main.m */; };
-		9DFF92D427B3C97B0068FC5E /* .dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE91FE816A90AEC00D1238A /* .dylib */; };
 		B65FBE2C2087AA2F00E21F59 /* malloc_printf.c in Sources */ = {isa = PBXBuildFile; fileRef = B65FBE2B2087AA2F00E21F59 /* malloc_printf.c */; };
 		B66C71D92034BFAE0047E265 /* malloc_common.h in Headers */ = {isa = PBXBuildFile; fileRef = B66C71D72034BFAE0047E265 /* malloc_common.h */; };
 		B66C71DA2034BFAE0047E265 /* malloc_common.c in Sources */ = {isa = PBXBuildFile; fileRef = B66C71D82034BFAE0047E265 /* malloc_common.c */; };
@@ -64,14 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9DFF92D227B3C8A70068FC5E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FFC1BE516A908F800027192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3FE91FE716A90AEC00D1238A;
-			remoteInfo = libsystem_malloc;
-		};
-		9DFF92D627B3C97B0068FC5E /* PBXContainerItemProxy */ = {
+		9DB7550C27B4ECE10068D503 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3FFC1BE516A908F800027192 /* Project object */;
 			proxyType = 1;
@@ -81,17 +73,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9DB7550927B4E1660068D503 /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				9DB7550827B4E1660068D503 /* .dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9DFF92C927B3C8960068FC5E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,7 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DFF92D427B3C97B0068FC5E /* .dylib in Frameworks */,
+				9DB7550A27B4ECE10068D503 /* .dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,13 +408,11 @@
 				9DFF92C727B3C8960068FC5E /* Sources */,
 				9DFF92C827B3C8960068FC5E /* Frameworks */,
 				9DFF92C927B3C8960068FC5E /* CopyFiles */,
-				9DB7550927B4E1660068D503 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9DFF92D327B3C8A70068FC5E /* PBXTargetDependency */,
-				9DFF92D727B3C97B0068FC5E /* PBXTargetDependency */,
+				9DB7550D27B4ECE10068D503 /* PBXTargetDependency */,
 			);
 			name = libsystem_malloc_test;
 			productName = libsystem_malloc_test;
@@ -537,15 +516,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9DFF92D327B3C8A70068FC5E /* PBXTargetDependency */ = {
+		9DB7550D27B4ECE10068D503 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3FE91FE716A90AEC00D1238A /* libsystem_malloc */;
-			targetProxy = 9DFF92D227B3C8A70068FC5E /* PBXContainerItemProxy */;
-		};
-		9DFF92D727B3C97B0068FC5E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3FE91FE716A90AEC00D1238A /* libsystem_malloc */;
-			targetProxy = 9DFF92D627B3C97B0068FC5E /* PBXContainerItemProxy */;
+			targetProxy = 9DB7550C27B4ECE10068D503 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
