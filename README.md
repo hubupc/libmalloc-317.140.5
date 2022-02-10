@@ -203,8 +203,9 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        void *obj = (void *)calloc(1, 12);
+        void *obj = calloc(1, 12);
         NSLog(@"%zu", malloc_size(obj));
+        free(obj);
     }
     
     return 0;
