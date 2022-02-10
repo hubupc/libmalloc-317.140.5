@@ -966,6 +966,7 @@ register_pgm_zone(bool internal_diagnostics)
 	}
 }
 
+// 添加初始化代码
 static os_once_t _malloc_initialize_pred;
 MALLOC_ALWAYS_INLINE
 static inline void
