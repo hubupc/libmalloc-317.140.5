@@ -234,7 +234,7 @@ int main(int argc, const char * argv[]) {
     static inline void
     _malloc_initialize_once(void)
     {
-	os_once(&_malloc_initialize_pred, NULL, _malloc_initialize);
+        os_once(&_malloc_initialize_pred, NULL, _malloc_initialize);
     }
    
     static inline malloc_zone_t *
