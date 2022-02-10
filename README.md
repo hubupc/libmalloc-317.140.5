@@ -221,14 +221,20 @@ int main(int argc, const char * argv[]) {
    方案：在 libmalloc-317.140.5/src/malloc.c 中添加代码： 
 
     ```
-    // 添加初始化代码
-    static os_once_t _malloc_initialize_pred;
-     
+	// 添加初始化代码
+	static os_once_t _malloc_initialize_pred;
+	MALLOC_ALWAYS_INLINE
+	static inline void
+	_malloc_initialize_once(void)
+	{
+		os_once(&_malloc_initialize_pred, NULL, _malloc_initialize);
+	}
+   
     static inline malloc_zone_t *
     inline_malloc_default_zone(void)
     {
         // 添加初始化代码
-        os_once(&_malloc_initialize_pred, NULL, _malloc_initialize);
+        _malloc_initialize_once();
 
         // malloc_report(ASL_LEVEL_INFO, "In inline_malloc_default_zone with %d %d\n", malloc_num_zones, malloc_has_debug_zone);
         return malloc_zones[0];
