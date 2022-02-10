@@ -204,7 +204,7 @@
 ## 测试代码
 文件：main.m
 
-```
+```C
 #import <Foundation/Foundation.h>
 #import <malloc/malloc.h>
 
@@ -227,15 +227,15 @@ int main(int argc, const char * argv[]) {
 2. 问题：malloc_zones[0]; Thread 1: EXC_BAD_ACCESS (code=EXC_I386_GPFLT)  
    方案：在 libmalloc-317.140.5/src/malloc.c 中添加代码： 
 
-    ```
-	// 添加初始化代码
-	static os_once_t _malloc_initialize_pred;
-	MALLOC_ALWAYS_INLINE
-	static inline void
-	_malloc_initialize_once(void)
-	{
-		os_once(&_malloc_initialize_pred, NULL, _malloc_initialize);
-	}
+    ```c
+    // 添加初始化代码
+    static os_once_t _malloc_initialize_pred;
+    MALLOC_ALWAYS_INLINE
+    static inline void
+    _malloc_initialize_once(void)
+    {
+	os_once(&_malloc_initialize_pred, NULL, _malloc_initialize);
+    }
    
     static inline malloc_zone_t *
     inline_malloc_default_zone(void)
@@ -254,7 +254,7 @@ int main(int argc, const char * argv[]) {
    探索1：系统的 libmalloc 中的 __malloc_init 函数，是被哪个库调用的呢？我在 Libsystem （[苹果开源 Libsystem](https://github.com/apple-oss-distributions/Libsystem)）中找到了 __malloc_init 的调用点：
    
    文件：
-   ```
+   ```C
    __attribute__((constructor))
     static void
     libSystem_initializer(int argc,
@@ -275,7 +275,7 @@ int main(int argc, const char * argv[]) {
    
    探索2：libSystem_initializer 又是何时调用的呢？之前在研究 Runtime 启动流程时在 _objc_init 函数中打断点，然后用 LLDB 命令打印 函数调用栈可以看到：
    
-   ```
+   ```Sh
    (lldb) bt
     * thread #1, queue = 'com.apple.main-thread', stop reason = breakpoint 11.1
     * frame #0: 0x00000001002ed304 libobjc.A.dylib`_objc_init at objc-os.mm:925:9
@@ -312,3 +312,5 @@ int main(int argc, const char * argv[]) {
 - [苹果开源 Libsystem](https://github.com/apple-oss-distributions/Libsystem)
 - [iOS Runtime源码编译、调试 objc4-818.2](https://juejin.cn/post/6959465707046354975)
 - [iOS 高级之美（六）—— malloc分析](https://juejin.cn/post/6844904033908424717)
+
+
